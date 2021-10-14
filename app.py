@@ -10,12 +10,12 @@ app = Flask(__name__)
 
 async def abrir_navegador():
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    #chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--no-sandbox")
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
-    #driver = webdriver.Chrome(executable_path=("chromedriver.exe"), options=chrome_options)
+    #driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
+    driver = webdriver.Chrome(executable_path=("chromedriver.exe"), options=chrome_options)
     driver.get('https://www.comprasnet.gov.br/seguro/loginportal.asp')
     wait = WebDriverWait(driver,100)
     pesquisa = wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/main/div/div/div[2]/main/h3'))).text

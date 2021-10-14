@@ -1,6 +1,6 @@
 from flask.json import jsonify
 from selenium import webdriver
-from flask import Flaskm, jsonify
+from flask import Flask, jsonify
 import asyncio
 import os
 

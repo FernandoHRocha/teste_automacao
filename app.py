@@ -17,7 +17,7 @@ async def abrir_navegador():
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
     #driver = webdriver.Chrome(executable_path=("chromedriver.exe"), options=chrome_options)
     driver.get('https://www.comprasnet.gov.br/seguro/loginportal.asp')
-    wait = WebDriverWait(driver,10)
+    wait = WebDriverWait(driver,100)
     pesquisa = wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/main/div/div/div[2]/main/h3'))).text
     driver.quit()
     return pesquisa

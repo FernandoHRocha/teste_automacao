@@ -1,4 +1,7 @@
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from flask import Flask, jsonify
 import os
 import asyncio
@@ -14,7 +17,8 @@ async def abrir_navegador():
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
     #driver = webdriver.Chrome(executable_path=("chromedriver.exe"), options=chrome_options)
     driver.get('https://www.comprasnet.gov.br/seguro/loginportal.asp')
-    pesquisa = driver.find_element_by_xpath('/html/body/main/div/div/div[2]/main/h3').text
+    wait = WebDriverWait(driver,10)
+    pesquisa = wait.until(EC.presence_of_element_located((By.XPATH,'/html/body/main/div/div/div[2]/main/h3'))).text
     driver.quit()
     return pesquisa
 

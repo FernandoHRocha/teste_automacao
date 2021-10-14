@@ -16,8 +16,8 @@ def abrir_navegador():
 def realizar_teste(driver):
     driver.get('https://www.google.com')
     pesquisa = driver.find_element_by_xpath('/html/body/div[1]/div[5]/div[2]/div[1]/a[4]').text
-    print(pesquisa)
     driver.quit()
+    return pesquisa
 
 @app.route('/')
 def index():
@@ -25,7 +25,7 @@ def index():
 
 @app.route('/teste')
 def teste():
-    return 'Tentativa'
+    return realizar_teste(abrir_navegador())
 
 if __name__ == '__main__':
     app.run()

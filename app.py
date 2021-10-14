@@ -13,8 +13,8 @@ async def abrir_navegador():
     chrome_options.add_argument("--no-sandbox")
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
     #driver = webdriver.Chrome(executable_path=("chromedriver.exe"), options=chrome_options)
-    driver.get('https://www.google.com')
-    pesquisa = driver.find_element_by_xpath('/html/body/div[1]/div[5]/div[2]/div[1]/a[4]').text
+    driver.get('https://www.comprasnet.gov.br/seguro/loginportal.asp')
+    pesquisa = driver.find_element_by_xpath('/html/body/main/div/div/div[2]/main/h3').text
     driver.quit()
     return pesquisa
 

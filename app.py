@@ -24,7 +24,7 @@ def index():
     return 'Ok!'
 
 @app.route('/teste')
-def teste():
+async def teste():
     return realizar_teste(abrir_navegador())
 
 if __name__ == '__main__':

@@ -1,5 +1,7 @@
+from flask.json import jsonify
 from selenium import webdriver
-from flask import Flask
+from flask import Flaskm, jsonify
+import asyncio
 import os
 
 app = Flask(__name__)
@@ -25,7 +27,10 @@ def index():
 
 @app.route('/teste')
 async def teste():
-    return realizar_teste(abrir_navegador())
+    asyncio.set_event_loop(asyncio.new_event_loop())
+    loop = asyncio.get_event_loop()
+    result = loop.run_until_complete(realizar_teste(abrir_navegador()))
+    return jsonify({"retorno":result})
 
 if __name__ == '__main__':
     app.run()
